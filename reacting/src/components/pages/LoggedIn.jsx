@@ -14,16 +14,21 @@ function LoggedIn() {
         setIsDarkMode(!isDarkMode);
         console.log(isDarkMode);
     }
+    console.log(isDarkMode);
+
+    let backColor = isDarkMode ? "dark-mode-bg" : "light-mode-bg"
+
+
 
 
   return (
     <>
-      <div className={`${isDarkMode ? "dark-mode-bg" : "light-mode-bg"}flex w-full justify-between`}>
-        <Navbar />
+      <div className={`flex w-full justify-between`}>
+        <Navbar isDarkMode={isDarkMode}/>
 
         <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route exact path='/settings' element={<Settings switchChange={switchChanged} isDark={isDarkMode} />} />
+            <Route path='/' element={<Homepage isDarkMode={isDarkMode} backColor={backColor}/>} />
+            <Route exact path='/settings' element={<Settings switchChange={switchChanged} bg={backColor} isDarkMode={isDarkMode} />} />
             <Route path='/account' element={<Account />} />
         </Routes>
 

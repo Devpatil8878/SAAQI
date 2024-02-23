@@ -3,7 +3,7 @@ import Profile from '../Profile'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
-function UserAccount() {
+function UserAccount({isDarkMode}) {
 
     const ar = [
         {
@@ -48,7 +48,7 @@ function UserAccount() {
 
 
 
-            return <div className="friends-animation users w-[80%] h-24 rounded bg-zinc-800 text-white">
+            return <div className={`${isDarkMode ? "dark-mode-component-bg" : "light-mode-component-bg"} friends-animation users w-[80%] h-24 rounded `}>
                 <div className="flex">
                     <div className="profile">
                         <button className='w-12 h-12 flex justify-center items-center rounded-full m-5 ml-8 mr-3 min-w-12'>

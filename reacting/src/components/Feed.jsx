@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Feed() {
+function Feed({isDarkMode}) {
 
     let arr = [
         {
@@ -35,15 +35,11 @@ function Feed() {
         })
     })
 
-
-
   return (
     <>
-        
-
             {arr.map((elem, index)=>{
                 return <>
-                <div className='feed-animation w-[70%] flex-col dark-mode-component-bg h-auto mx-10 mt-10 rounded-xl overflow-y-auto'>
+                <div className={`${isDarkMode ? "dark-mode-component-bg" : "light-mode-component-bg"} feed-animation w-[70%] flex-col h-auto mx-10 mt-10 rounded-xl overflow-y-auto`}>
                     <div className="flex account-info justify-between">
 
                         <div className="flex mt-3">

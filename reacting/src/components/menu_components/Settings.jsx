@@ -54,22 +54,21 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 
-export default function Settings({switchChange, isDarkMode}) {
+export default function Settings({switchChange, isDarkMode, bg}) {
 
 
     
   return (
-    <div className={`${isDarkMode ? "dark-mode-bg" : "light-mode-bg"} transition-all w-[100vw] h-[100vh]`}>
+    <div className={`${bg} transition-all w-[100vw] h-[100vh]`}>
 
         <div className='ml-72 pl-20 pt-20 absolute top-28 border border-zinc-500 h-[60vh] w-[60vw] rounded-xl'>
             <FormGroup>
                 <FormControlLabel
                     control={<MaterialUISwitch sx={{ m: 1 }}  />}
+                    checked={isDarkMode}
                     label={isDarkMode ? "Dark Mode" : "Light Mode"}
                     onChange={switchChange}
                 />
-
-                <h1 className='text-black'> {String(isDarkMode)}</h1>
             </FormGroup>
         </div>
 
