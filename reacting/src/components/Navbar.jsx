@@ -11,6 +11,15 @@ import { colors } from '@mui/material'
 
 function Navbar({isDarkMode}) {
 
+const handleLogout = () => {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('token');
+
+  setIsLoggedIn(false);
+
+};
+
+
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const handleMenuMouseOver = ()=>{
@@ -124,7 +133,7 @@ function Navbar({isDarkMode}) {
 </svg>
                     </NavLink></li>
                 <div >
-                  <NavLink to="/logout">
+                  <NavLink to="/logout" onClick={handleLogout}>
                     <h1 className='self-center mt-[5.5rem] menu-anime'>{isMouseOver && `${"Logout"}`}</h1>
                   </NavLink>
                 </div>

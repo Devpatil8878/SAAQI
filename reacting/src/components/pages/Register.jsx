@@ -1,7 +1,44 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
 function Register() {
+
+    const [formData, setFormData] = useState({
+      username: '',
+      email: '',
+      password: '',
+      confirmpassword: ''
+    });
+  
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
+        const response = await fetch('http://localhost:3001/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (response.ok) {
+          console.log('User registered successfully');
+          // Optionally, you can redirect or perform other actions after successful registration
+        } else {
+          console.error('Error registering user');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+  
+
+
   return (
     <>
         <div className="flex items-center justify-center bg-[url(https://images.unsplash.com/photo-1707343843982-f8275f3994c5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] w-full h-[100vh]">
@@ -10,21 +47,21 @@ function Register() {
               <div className="dets mt-[9%]  w-[90%] h-[70%] flex flex-col justify-center ">
 
                 
-                  <form action="">
+                  <form onSubmit={handleSubmit}>
                     <div className="flex flex-col justify-center items-center gap-5 text-white ">
                     <h1 className='text-3xl mt-[5rem] font-semibold'>Register</h1>
 
-                    <input type="text" name="full Name" id="name" placeholder='Full Name' className='w-[80%] h-9 p-4 pl-6 bg-transparent border-b focus:outline-none placeholder-gray-200' />
-                    <input type="email" name="email" id="email" placeholder='Email' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
-                    <input type="password" name="password" id="password" placeholder='Password' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
-                    <input type="password" name='confirmpassword' id='confirmpassword' placeholder='Confirm Password' className='w-[80%] h-9 p-4 pl-6 bg-transparent border-b focus:outline-none placeholder-gray-200'/>
+                    <input type="text" name="username" value={formData.username} onChange={handleChange} id="name" placeholder='username' className='w-[80%] h-9 p-4 pl-6 bg-transparent border-b focus:outline-none placeholder-gray-200' />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} id="email" placeholder='Email' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} id="password" placeholder='Password' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
+                    <input type="password" name='confirmpassword' value={formData.confirmpassword} onChange={handleChange} id='confirmpassword' placeholder='Confirm Password' className='w-[80%] h-9 p-4 pl-6 bg-transparent border-b focus:outline-none placeholder-gray-200'/>
 
                     <div className="flex gap-2 ml-[-46%]">
                       <input type="checkbox" name="remember-me" id="remember-user" />
                       <label htmlFor="remember-user">Remember me</label>
                     </div>
 
-                    <input type="button" value="Submit" className='w-[35%] h-10 p-2 mt-7 bg-white text-black rounded-lg'/>
+                    <input type="submit" value="Submit" className='w-[35%] h-10 p-2 mt-7 bg-white text-black rounded-lg'/>
                     <a href="login" className='text-[13px] text-zinc-300 mb-7'>Already Have an Account?</a>
                     
                     </div>

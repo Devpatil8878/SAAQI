@@ -1,6 +1,53 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { redirect } from 'react-router-dom';
 
-function Login() {
+function Login({handleIsLoggedIn}) {
+
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Optionally, you can redirect or perform other actions after successful login
+        console.log('User logged in successfully');
+        handleIsLoggedIn(true)
+        
+      } else {
+        handleIsLoggedIn(false)
+        const data = await response.json();
+        console.log(data.message || 'Error logging in');
+      }
+    } catch (error) {
+      handleIsLoggedIn(false)
+      console.error('Error:', error);
+      console.log('Internal Server Error');
+    }
+  };
+
+
+
     return (
       <>
           <div className="flex items-center justify-center bg-[url(https://images.unsplash.com/photo-1707343843982-f8275f3994c5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] w-full h-[100vh]">
@@ -9,12 +56,12 @@ function Login() {
                 <div className="dets mt-[9%]  w-[90%] h-[70%] flex flex-col justify-center ">
   
                   
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                       <div className="flex flex-col justify-center items-center gap-5 text-white ">
                         <h1 className='text-3xl mt-10 font-semibold'>Login</h1>
     
-                        <input type="email" name="email" id="email" placeholder='Email' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
-                        <input type="password" name="password" id="password" placeholder='Password' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
+                        <input type="email" value={formData.email} onChange={handleChange}  name="email" id="email" placeholder='Email' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
+                        <input type="password" value={formData.password} onChange={handleChange}  name="password" id="password" placeholder='Password' className='w-[80%] h-9 p-4 pl-6  bg-transparent border-b focus:outline-none placeholder-gray-200'/>
                         
                         <div className="flex gap-[5.2rem] ">
                           <div>
@@ -25,7 +72,7 @@ function Login() {
                           <a href="forget-password" className='text-[13px] text-zinc-300'>Forget Password?</a>
                         </div>
 
-                        <input type="button" value="Submit" className='w-[35%] h-10 p-2 mt-7 bg-white text-black rounded-lg'/>
+                        <input type="submit" value="Submit" className='w-[35%] h-10 p-2 mt-7 bg-white text-black rounded-lg'/>
                         <a href="register" className='text-[13px] text-zinc-300'>Don't have an Account?</a>
                     
                         </div>
