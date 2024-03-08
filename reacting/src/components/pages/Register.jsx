@@ -1,7 +1,9 @@
 import React,{useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function Register() {
+
+  const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
       username: '',
@@ -28,6 +30,7 @@ function Register() {
   
         if (response.ok) {
           console.log('User registered successfully');
+          navigate("/login")
           // Optionally, you can redirect or perform other actions after successful registration
         } else {
           console.error('Error registering user');

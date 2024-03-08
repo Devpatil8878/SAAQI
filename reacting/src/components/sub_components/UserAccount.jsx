@@ -58,7 +58,7 @@ function UserAccount({isDarkMode}) {
                     <div className="flex-col">
                         <h1 className='text-semibold mt-3'>{elem.username}</h1>
                         <h4 className='text-xs'>{elem.about}</h4>
-                        <button className='w-16 h-6 mt-2 rounded text-[10px] bg-pink-600 text-white'>{`${elem.friend ? "Remove friend" : "Add friend"}`}</button>
+                        <button className='w-16 h-6 mt-2 rounded text-[10px] global-theme-color text-white'>{`${elem.friend ? "Remove friend" : "Add friend"}`}</button>
                     </div>
                 </div>
             </div>
