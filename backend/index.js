@@ -2,25 +2,22 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const Post = require("./models/post.model")
+const User = require("./models/user.model")
 
 
 const app = express();
 app.use(express.json());
 app.use(cors()); 
 
-mongoose.connect('mongodb://localhost:27017/mydbdb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/saaqi', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-const User = mongoose.model('User', {
-    username: String,
-    email: String,
-    password: String,
-    confirmpassword: String
-  });
+
 
 
 app.get("/", (req, res)=>{
@@ -60,9 +57,24 @@ app.post('/login', async (req, res) => {
       }
   
       // You might want to generate and send a token for authentication
+      res.status(200).json({ message: 'Login successful' });
+      
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
+
+  app.post('/post', async (req, res) => {
+    try {
+      const { content } = req.body;
   
-    //   res.status(200).json({ message: 'Login successful' });
-      res.redirect("http://localhost:3001/")
+      // Create a new post
+      const newPost = new Post({ content });
+      await newPost.save(); 
+  
+      res.status(201).json({ message: 'Post submitted successfully' });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });

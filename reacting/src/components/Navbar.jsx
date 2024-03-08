@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, Routes, Route, NavLink } from 'react-router-dom'
+import { Link, Routes, Route, NavLink, useNavigate } from 'react-router-dom'
 import Stories from '../components/Stories'
 import Post from '../components/Post'
 import Feed from '../components/Feed'
@@ -10,14 +10,16 @@ import { useGSAP } from "@gsap/react";
 import { colors } from '@mui/material'
 
 function Navbar({isDarkMode}) {
+  const navigate = useNavigate();
 
-const handleLogout = () => {
-  localStorage.removeItem('isLoggedIn');
-  localStorage.removeItem('token');
+  const handleLogout = () => {
 
-  setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('token');
 
-};
+    setIsLoggedIn(false);
+
+  };
 
 
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -132,9 +134,9 @@ const handleLogout = () => {
   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
 </svg>
                     </NavLink></li>
-                <div >
+                <div className='mt-[5.7rem]'>
                   <NavLink to="/logout" onClick={handleLogout}>
-                    <h1 className='self-center mt-[5.5rem] menu-anime'>{isMouseOver && `${"Logout"}`}</h1>
+                    <a href='/' className='self-center menu-anime'>{isMouseOver && `${"Logout"}`}</a>
                   </NavLink>
                 </div>
               </div>

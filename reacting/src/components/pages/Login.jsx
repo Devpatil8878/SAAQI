@@ -1,7 +1,9 @@
 import React,{useState} from 'react'
-import { redirect } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 
 function Login({handleIsLoggedIn}) {
+
+  const navigate = useNavigate();
 
 
   const [formData, setFormData] = useState({
@@ -32,6 +34,7 @@ function Login({handleIsLoggedIn}) {
       if (response.ok) {
         // Optionally, you can redirect or perform other actions after successful login
         console.log('User logged in successfully');
+        navigate("/")
         handleIsLoggedIn(true)
         
       } else {

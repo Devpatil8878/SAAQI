@@ -61,3 +61,14 @@ body{
     background-color: white;
     color: black;
 }
+
+#logoutbutton{
+    border: solid white 3px;
+    
+    background-color: red;
+}
+
+.global-theme-color{
+    --tw-bg-opacity: 1;
+    background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
