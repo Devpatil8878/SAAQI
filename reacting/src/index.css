@@ -72,3 +72,54 @@ body{
     --tw-bg-opacity: 1;
     background-color: rgb(126 34 206 / var(--tw-bg-opacity));
 }
+
+.temp{
+    background: linear-gradient(
+        to left,
+        hsl(332deg 100% 42%) 0%,
+        hsl(305deg 100% 38%) 17%,
+        hsl(278deg 100% 33%) 33%,
+        hsl(251deg 100% 29%) 50%,
+        hsl(296deg 100% 29%) 67%,
+        hsl(340deg 100% 28%) 83%,
+        hsl(25deg 100% 27%) 100%
+      ); 
+      /* background-repeat: no-repeat;
+      background-position: 0 20vw;
+      border-radius: 1000px 1000px 1px 1px; */
+}
+
+@layer utilities{
+    .boxshadow{
+        box-shadow: 
+        0 0 5px #03e9f4,
+        0 0 25px #03e9f4,
+        0 0 50pc #03e9f4,
+        0 0 100px 
+
+    }
+    .bluehai{
+        @apply text-[#03e9f4] uppercase   border-2     border-[#03e9f4]  rounded    
+    }
+    .bluehai:hover{
+        @apply text-white bg-[#03e9f4] boxshadow
+    }
+    .nav{
+        @apply relative   font-mono font-bold tracking-[1px] hover:text-white
+    }
+    .nav::after{
+        @apply content-[''] bg-purple-600 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300 text-gray-500
+
+}
+.nav:hover::after{
+    @apply w-[100%]
+}
+}
+
+
+.temp-bg{
+    background: rgb(22,12,110);
+    background: linear-gradient(48deg, rgba(22,12,110,1) 0%, rgba(0,0,0,1) 0%, rgba(39,34,40,0.8464635854341737) 57%, rgba(82,78,83,0.7652310924369747) 69%, rgba(255,255,255,0) 100%);
+
+
+}
