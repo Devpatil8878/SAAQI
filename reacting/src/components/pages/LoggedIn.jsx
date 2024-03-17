@@ -19,8 +19,6 @@ function LoggedIn() {
     let backColor = isDarkMode ? "dark-mode-bg" : "light-mode-bg"
 
 
-
-
   return (
     <>
       <div className={`flex w-full justify-between`}>
@@ -28,8 +26,8 @@ function LoggedIn() {
 
         <Routes>
             <Route path='/' element={<Homepage isDarkMode={isDarkMode} backColor={backColor}/>} />
-            <Route exact path='/settings' element={<Settings switchChange={switchChanged} bg={backColor} isDarkMode={isDarkMode} />} />
-            <Route path='/account' element={<Account />} />
+            <Route path='settings' element={<Settings switchChange={switchChanged} bg={backColor} isDarkMode={isDarkMode} />} />
+            <Route path='account' element={<Account />} />
         </Routes>
 
       </div>

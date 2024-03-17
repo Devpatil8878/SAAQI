@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/saaqi', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
+  fullname:  {
+    type: String,
+  },
   username: {
     type: String,
     unique: true,
@@ -14,6 +17,10 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   password: {
+    type: String,
+    required: true,
+  },
+  confirmpassword: {
     type: String,
     required: true,
   },

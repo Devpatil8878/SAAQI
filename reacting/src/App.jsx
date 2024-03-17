@@ -11,6 +11,8 @@ import Settings from '../src/components/menu_components/Settings'
 import Register from './components/pages/Register'
 import LoggedIn from './components/pages/LoggedIn'
 import Login from './components/pages/Login'
+import Mainpage from "../src/components/pages/mainpage/MainPage"
+import Account from './components/pages/Account';
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
       setIsLoggedIn(JSON.parse(storedIsLoggedIn));
     }
   }, []);
+
   
 
   return (
@@ -37,13 +40,14 @@ function App() {
           {isLoggedIn ? (
             <>
               <Route path="/" element={<LoggedIn />} />
-              {/* Add other logged-in routes here */}
+              <Route path='/settings' element={<Settings switchChange={switchChanged} bg={backColor} isDarkMode={isDarkMode} />} />
+              <Route path='/account' element={<Account />} />
             </>
           ) : (
             <>
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login handleIsLoggedIn={handleIsLoggedIn} />} />
-              <Route path="/" element={<Login handleIsLoggedIn={handleIsLoggedIn} />} />
+              <Route path="/" element={<Mainpage />} />
             </>
           )}
         </Routes>

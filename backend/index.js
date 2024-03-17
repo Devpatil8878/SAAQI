@@ -5,10 +5,16 @@ const cors = require('cors');
 const Post = require("./models/post.model")
 const User = require("./models/user.model")
 
+const session = require("express-session")
+const cookieParse = require("cookie-parser");
+const multer = require("multer");
+const upload = multer()
+
 
 const app = express();
 app.use(express.json());
 app.use(cors()); 
+app.use(session({secret: "ruh jism se ho gayi fanah"}))
 
 mongoose.connect('mongodb://localhost:27017/saaqi', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -57,7 +63,7 @@ app.post('/login', async (req, res) => {
       }
   
       // You might want to generate and send a token for authentication
-      res.status(200).json({ message: 'Login successful' });
+      res.send();
       
     } catch (error) {
       console.error(error);

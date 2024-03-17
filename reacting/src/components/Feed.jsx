@@ -24,6 +24,30 @@ function Feed({isDarkMode}) {
             post: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, veniam alias vero possimus est voluptates! Eveniet sint est nulla? Ratione ipsum eaque dignissimos, tenetur aliquam quisquam? Tempora sit est nobis.",
             date: "date"
           },
+          {
+            username: "Walter white",
+            image: "https://images.unsplash.com/photo-1679065949530-7bb1fba3ccb3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            post: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, veniam alias vero possimus est voluptates! Eveniet sint est nulla? Ratione ipsum eaque dignissimos, tenetur aliquam quisquam? Tempora sit est nobis.",
+            date: "date"
+          },
+          {
+            username: "Jason patrick",
+            image: "https://images.unsplash.com/photo-1682685797703-2bb22dbb885b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            post: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, veniam alias vero possimus est voluptates! Eveniet sint est nulla? Ratione ipsum eaque dignissimos, tenetur aliquam quisquam? Tempora sit est nobis.",
+            date: "date"
+          },
+          {
+            username: "Walter white",
+            image: "https://images.unsplash.com/photo-1679065949530-7bb1fba3ccb3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            post: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, veniam alias vero possimus est voluptates! Eveniet sint est nulla? Ratione ipsum eaque dignissimos, tenetur aliquam quisquam? Tempora sit est nobis.",
+            date: "date"
+          },
+          {
+            username: "Jason patrick",
+            image: "https://images.unsplash.com/photo-1682685797703-2bb22dbb885b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            post: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, veniam alias vero possimus est voluptates! Eveniet sint est nulla? Ratione ipsum eaque dignissimos, tenetur aliquam quisquam? Tempora sit est nobis.",
+            date: "date"
+          },
     ]
 
     useGSAP(()=>{
