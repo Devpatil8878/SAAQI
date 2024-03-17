@@ -30,6 +30,16 @@ function App() {
     }
   }, []);
 
+  let [isDarkMode, setIsDarkMode] = useState(true);
+
+  const switchChanged = () => {
+      setIsDarkMode(!isDarkMode);
+      console.log(isDarkMode);
+  }
+  console.log(isDarkMode);
+
+  let backColor = isDarkMode ? "dark-mode-bg" : "light-mode-bg"
+
   
 
   return (
